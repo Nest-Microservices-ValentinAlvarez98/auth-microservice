@@ -9,6 +9,8 @@ interface EnvVars {
 
       NATS_SERVERS: string[]
 
+      DATABASE_URL: string
+
 }
 
 const envsSchema = joi.object({
@@ -16,6 +18,8 @@ const envsSchema = joi.object({
       PORT: joi.number().required(),
 
       NATS_SERVERS: joi.array().items(joi.string()).required(),
+
+      DATABASE_URL: joi.string().required()
 
 }).unknown(true)
 
@@ -37,4 +41,6 @@ export const envs = {
       port: envVars.PORT,
 
       natsServers: envVars.NATS_SERVERS,
+
+      databaseUrl: envVars.DATABASE_URL
 }
