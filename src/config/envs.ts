@@ -11,6 +11,8 @@ interface EnvVars {
 
       DATABASE_URL: string
 
+      JWT_SECRET: string
+
 }
 
 const envsSchema = joi.object({
@@ -19,7 +21,9 @@ const envsSchema = joi.object({
 
       NATS_SERVERS: joi.array().items(joi.string()).required(),
 
-      DATABASE_URL: joi.string().required()
+      DATABASE_URL: joi.string().required(),
+
+      JWT_SECRET: joi.string().required()
 
 }).unknown(true)
 
@@ -42,5 +46,7 @@ export const envs = {
 
       natsServers: envVars.NATS_SERVERS,
 
-      databaseUrl: envVars.DATABASE_URL
+      databaseUrl: envVars.DATABASE_URL,
+
+      jwtSecret: envVars.JWT_SECRET
 }
